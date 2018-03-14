@@ -1,0 +1,26 @@
+#!/bin/bash
+
+COORDS="$(drawrect)"
+#echo "${COORDS}"
+
+w=$(echo $COORDS | cut -f1 -d-)
+h=$(echo $COORDS | cut -f2 -d-)
+x=$(echo $COORDS | cut -f3 -d-)
+y=$(echo $COORDS | cut -f4 -d-)
+
+if [ "$w" -eq "0" ]; then
+	exit;
+fi
+if [ "$h" -eq "0" ]; then
+	exit;
+fi
+
+gnome-terminal
+
+sleep 0.1s;
+i3-msg floating enable
+i3-msg resize set ${w}px ${h}px
+i3-msg move position ${x}px ${y}px
+
+
+
