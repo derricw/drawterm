@@ -17,7 +17,7 @@ fi
 
 gnome-terminal
 
-sleep 0.1s;
+#sleep 0.1s;
 i3-msg floating enable
 i3-msg resize set ${w}px ${h}px
 i3-msg move position ${x}px ${y}px

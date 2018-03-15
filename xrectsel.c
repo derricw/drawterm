@@ -13,6 +13,7 @@ int main(void)
 	int rx = 0, ry = 0, rw = 0, rh = 0;
 	int rect_x = 0, rect_y = 0, rect_w = 0, rect_h = 0;
 	int btn_pressed = 0, done = 0;
+	int line_width = 5;
 
 	XEvent ev;
 	Display *disp = XOpenDisplay(NULL);
@@ -41,6 +42,8 @@ int main(void)
 	gc = XCreateGC(disp, root,
 		       GCFunction | GCForeground | GCBackground | GCSubwindowMode,
 		       &gcval);
+
+	XSetLineAttributes(disp, gc, line_width, LineSolid, CapNotLast, JoinMiter);
 
 	/* this XGrab* stuff makes XPending true ? */
 	if ((XGrabPointer(disp, root, False,
